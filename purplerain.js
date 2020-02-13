@@ -1,5 +1,6 @@
 const canvas = document.getElementById("canvas1");
 const context = canvas.getContext("2d");
+let drops = [];
 
 // Run once at the beginning of the program
 function setup() {
@@ -7,14 +8,23 @@ function setup() {
     canvas.height = innerHeight;
 }
 
-let drop = new Drop(20, 30, 2, 1, 10, 20);
-
 // run every frame
 function draw() {
     requestAnimationFrame(draw);
     context.clearRect(0, 0, innerWidth, innerHeight);
-    drop.show();
-    drop.fall();
+
+    spawnDrops();
+
+    for (let i = 0; i < drops.length; i++) {
+        drops[i].show();
+        drops[i].fall();
+    }
+}
+
+function spawnDrops() {
+    for (let i = 0; i < 100; i++) {
+        drops.push(randDrop());
+    }
 }
 
 setup();
