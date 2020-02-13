@@ -18,11 +18,13 @@ function draw() {
     for (let i = 0; i < drops.length; i++) {
         drops[i].show();
         drops[i].fall();
+        if (drops[i].destroy()) drops.splice(i, 1);
+        // console.log(drops.length);
     }
 }
 
 function spawnDrops() {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < MAX_DROPS_PER_LINE; i++) {
         drops.push(randDrop());
     }
 }
