@@ -1,6 +1,8 @@
 const canvas = document.getElementById("canvas1");
 const context = canvas.getContext("2d");
+
 let drops = [];
+mouseMagnet = new mouse(MOUSE_RADIUS, true);
 
 // Run once at the beginning of the program
 function setup() {
@@ -18,6 +20,7 @@ function draw() {
     for (let i = 0; i < drops.length; i++) {
         drops[i].show();
         drops[i].fall();
+        mouseMagnet.pull(drops[i]);
         if (drops[i].destroy()) drops.splice(i, 1);
         // console.log(drops.length);
     }

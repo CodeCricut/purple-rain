@@ -7,6 +7,7 @@ function Drop(x, y, xspeed, yspeed, width, height) {
     this.height = height;
 
     this.fall = () => {
+        this.yspeed += Y_SPEED_ACCELERATION / 100;
         this.x += this.xspeed;
         this.y += this.yspeed;
     };
